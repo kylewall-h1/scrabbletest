@@ -1,4 +1,5 @@
-Interview question!  The scrabble problem
+Interview question!  
+The scrabble problem
 ========
 The point of this is to be a test of a candidate's ability to solve difficult problems, code, and use git properly.
 
@@ -17,6 +18,8 @@ You need to solve the following problem.
 
 Given a hand, consisting of 1 to 7 (inclusive) characters: [a-z] and *, produce all the vaild words that you could create.  In order to be considered a word, the word needs to be in the supplied dictionary (dictionary.json).
 
+The * character is a wild card character and can be any character from [a-z].
+
 Make sure you create your own branch and make a pull request for this test. 
 
 
@@ -24,6 +27,8 @@ Make sure you create your own branch and make a pull request for this test.
     class ScrabbleHand {
       constructor(dict) {
         this._dict = dict.dictionary;
+        //If you want to make modifications to the dictionary or convert it to something else 
+        //do so here
       }
 
       solveHand(tiles) {
