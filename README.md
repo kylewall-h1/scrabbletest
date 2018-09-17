@@ -57,11 +57,11 @@ I have included a couple of tests at the bottom of index.js in order to help you
 
     const output2 = sh.solveHand('abcd');
 
-    if(output.indexOf('a') === -1
-    || output.indexOf('bad') === -1 
-    || output.indexOf('cab') === -1 
-    || output.indexOf('cad') === -1
-    || output.indexOf('dab') === -1)
+    if(output2.indexOf('a') === -1
+    || output2.indexOf('bad') === -1 
+    || output2.indexOf('cab') === -1 
+    || output2.indexOf('cad') === -1
+    || output2.indexOf('dab') === -1)
     {
       console.log( "FAIL" );
     } else {
