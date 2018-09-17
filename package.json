@@ -1,0 +1,16 @@
+{
+  "name": "scrabble",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kyle Wall <kyle.wall@hyperloop-one.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "babel src -d dist && cp ./dictionary.json dist/dictionary.json"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-inline-json-import": "^0.3.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
