@@ -140,7 +140,7 @@ class ScrabbleHand {
       let wildTiles = [];
       for(let i = 0; wildTileCount > i; i++) {
         wildTiles.unshift("a")
-        for(let atCharCode = 1; wildCardPossibilities > atCharCode; atCharCode++) {
+        for(let atCharCode = 1; wildCardPossibilities >= atCharCode; atCharCode++) {
           wildTiles[0] = String.fromCharCode(atCharCode + 96);
           searchResults.push(this._search([...wildTiles, ...wildTilesRemoved].sort()));
         }
