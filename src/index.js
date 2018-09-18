@@ -150,10 +150,10 @@ class ScrabbleHand {
       searchResults = this._search(tiles.split("").sort());
     }
 
-    if(searchResults.length > 1) {
-      searchResults = [].concat(...searchResults);
-    }
-    return searchResults;
+    if(searchResults.length > 1) { 
+      searchResults = [].concat(...searchResults); 
+    } 
+    return [...new Set(searchResults)].sort(); // set a list of unique answers }
   }
 }
 
@@ -179,6 +179,19 @@ if(output2.indexOf('a') === -1
 || output2.indexOf('cab') === -1 
 || output2.indexOf('cad') === -1
 || output2.indexOf('dab') === -1)
+{
+  console.log( "FAIL" );
+} else {
+  console.log( "PASS" );
+}
+
+const output3 = sh.solveHand('adicel*');
+
+if(output3.indexOf('adze') === -1
+|| output3.indexOf('daze') === -1 
+|| output3.indexOf('laze') === -1 
+|| output3.indexOf('lazed') === -1
+|| output3.indexOf('zeal') === -1)
 {
   console.log( "FAIL" );
 } else {
