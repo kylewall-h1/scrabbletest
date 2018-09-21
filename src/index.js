@@ -35,29 +35,13 @@ class ScrabbleHand {
   }
 }
 
-let sh = new ScrabbleHand(dictionary);
-const output = sh.solveHand('*bt');
+const output = sh.solveHand('abcd');
 
-if(output.indexOf('bat') === -1 
-|| output.indexOf('bet') === -1 
-|| output.indexOf('bit') === -1 
-|| output.indexOf('bot') === -1
-|| output.indexOf('but') === -1
-|| output.indexOf('tab') === -1
-|| output.indexOf('tub') === -1)
-{
-  console.log( "FAIL" );
-} else {
-  console.log( "PASS" );
-}
-
-const output2 = sh.solveHand('abcd');
-
-if(output2.indexOf('a') === -1
-|| output2.indexOf('bad') === -1 
-|| output2.indexOf('cab') === -1 
-|| output2.indexOf('cad') === -1
-|| output2.indexOf('dab') === -1)
+if(output.indexOf('a') === -1
+|| output.indexOf('bad') === -1 
+|| output.indexOf('cab') === -1 
+|| output.indexOf('cad') === -1
+|| output.indexOf('dab') === -1)
 {
   console.log( "FAIL" );
 } else {
