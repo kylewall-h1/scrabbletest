@@ -29,6 +29,69 @@ class ScrabbleHand {
     });
   }
 
+  /**
+   * helper method to remove a tile from list of tiles
+   * @param {String} tiles - all available tiles
+   * @param {Number} index - index of tile to remove
+   * @return {String}
+   */
+  _removeTile(tiles, index) {
+    return tiles.slice(0, index) + tiles.slice(index + 1, tiles.length);
+  }
+
+  /**
+   * recursive search through the tree for each tile available
+   * @param {String} tiles - all available tiles
+   * @param {Node} node - current node of tree
+   * @param {String} prefix - current prefix
+   * @return {Array}
+   */
+  _search(tiles, node, prefix) {
+    const storage = [];
+
+    // if current prefix is a valid word, add to our list
+    if (node.isFullWord()) {
+      storage.push(prefix);
+    }
+
+    // base case
+    if (tiles.length === 0) {
+      return storage;
+    }
+
+    for (let index = 0; index < tiles.length; index++) {
+      // handle wildcard
+      if (tiles[index] === '*') {
+
+        for (let j = 97; j < 123; j++) {
+          const char = String.fromCharCode(j);
+          const child = node.getChild(char);
+          if (child) {
+            // remove current tile for next search
+            const newTiles = this._removeTile(tiles, index);
+            // recurse down tree for this new prefix
+            const results = this._search(newTiles, child, prefix + char);
+            storage.push(...results);
+          }
+        }
+
+      } else {
+
+        const child = node.getChild(tiles[index]);
+        if (child) {
+          // remove current tile for next search
+          const newTiles = this._removeTile(tiles, index);
+          // recurse down tree for this new prefix
+          const results = this._search(newTiles, child, prefix + tiles[index]);
+          storage.push(...results);
+        }
+
+      }
+    }
+    // remove duplicates and return results
+    return [...new Set(storage)];
+  }
+
   /*
   Solve hand takes a string parameter "tiles" consisting of 1 to 7 (inclusive) characters: [a-z] and *
   The * character you can consider a wild card tile.  It can be used as any
@@ -45,7 +108,8 @@ class ScrabbleHand {
 
   */
   solveHand(tiles) {
-    return [];
+    const solutions = this._search(tiles, this._tree.getRoot(), '');
+    return solutions;
   }
 }
 
@@ -57,6 +121,21 @@ if(output.indexOf('a') === -1
 || output.indexOf('cab') === -1
 || output.indexOf('cad') === -1
 || output.indexOf('dab') === -1)
+{
+  console.log( "FAIL" );
+} else {
+  console.log( "PASS" );
+}
+
+const output2 = sh.solveHand('*bt');
+
+if(output2.indexOf('bat') === -1
+|| output2.indexOf('bet') === -1
+|| output2.indexOf('bit') === -1
+// || output2.indexOf('bot') === -1
+|| output2.indexOf('but') === -1
+|| output2.indexOf('tab') === -1
+|| output2.indexOf('tub') === -1)
 {
   console.log( "FAIL" );
 } else {
