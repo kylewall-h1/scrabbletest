@@ -132,7 +132,6 @@ const output2 = sh.solveHand('*bt');
 if(output2.indexOf('bat') === -1
 || output2.indexOf('bet') === -1
 || output2.indexOf('bit') === -1
-// || output2.indexOf('bot') === -1
 || output2.indexOf('but') === -1
 || output2.indexOf('tab') === -1
 || output2.indexOf('tub') === -1)
